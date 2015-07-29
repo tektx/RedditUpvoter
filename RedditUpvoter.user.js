@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       Reddit Upvoter
 // @author     T. Knight
-// @version    2
+// @version    3
 // @description  Upvotes Reddit posts made in a defined list of subreddits for purposes of increasing post visibility in smaller subs
 // @include      /https?://www\.reddit\.com*/
 // @exclude     https?://www.reddit.com/r/*/comments*
@@ -12,8 +12,7 @@
 
 var Subs = ["cscareerquestions", "tasker", "personalfinance", "Ubuntu"];
 
-if (window.location.href.match(/https?:\/\/www\.reddit\.com\/?$/)
-{
+if (window.location.href.match(/https?:\/\/www\.reddit\.com\/?$/)) {
     window.setInterval(function () {
         var vAll = document.getElementsByTagName("*");
         for(i=0; i<vAll.length; i++) {
@@ -32,11 +31,9 @@ if (window.location.href.match(/https?:\/\/www\.reddit\.com\/?$/)
             }
         }
     }, 10000);
-}
-else if(window.location.href.match(/www\.reddit\.com\/r\/[a-zA-Z]+(#page=[0-9]+)?/)) {
+} else if(window.location.href.match(/www\.reddit\.com\/r\/[a-zA-Z]+(#page=[0-9]+)?/)) {
     for(i=0; i<Subs.length; i++) {
         if(window.location.href.match(/www.reddit.com\/r\// + Subs[i] + /\/?/)) {
-            console.log("Match!");
             window.setInterval(function() {
                 var vAll = document.getElementsByTagName("*");
                 for(j=0; j<vAll.length; j++) {
